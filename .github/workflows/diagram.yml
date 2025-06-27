@@ -1,9 +1,6 @@
 name: Build diagram
 
-on:
-  push:
-    paths:
-      - "data/**"
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -15,8 +12,7 @@ jobs:
         run: python -m pip install pyyaml
 
       - name: Convert YAML → Mermaid
-        run: |
-          python tools/yml-to-mermaid.py > map.mmd
+        run: python tools/yml-to-mermaid.py > map.mmd
 
       - name: Commit diagram
         run: |
