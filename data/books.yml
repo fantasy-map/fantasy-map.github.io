@@ -1,13 +1,16 @@
 nodes:
-  - id: h   # Hobbit
+  - id: h          # Hobbit
     label: "The Hobbit"
-    href: "hobbit.html"   # will become clickable
-  - id: d   # Dune
+    href: "hobbit.html"
+
+  - id: d          # Dune
     label: "Dune"
     href: "dune.html"
+
   - id: e
     label: "Earthsea"
     href: "earthsea.html"
+
   - id: ds
     label: "Discworld"
     href: "discworld.html"
@@ -16,11 +19,13 @@ edges:
   - from: h
     to: d
     trait: World-building
+
   - from: h
     to: e
     trait: Whimsy
     level: 1
+
   - from: e
     to: ds
     trait: Whimsy
-    level: 2      # shows as “Whimsy×2”
+    level: 2        # shows as “Whimsy×2”
