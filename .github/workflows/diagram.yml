@@ -1,1 +1,24 @@
+name: Build diagram
 
+on:
+  push:
+    paths:
+      - "data/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Convert YAML → Mermaid
+        run: |
+          python tools/yml-to-mermaid.py > map.mmd
+
+      - name: Commit diagram
+        run: |
+          git config user.name "map-bot"
+          git config user.email "bot@noreply.github.com"
+          git add map.mmd
+          git commit -m "bot: update diagram" || echo "No changes"
+          git push
