@@ -1,31 +1,39 @@
 nodes:
-  - id: h          # Hobbit
+  
+  - id: 0
     label: "The Hobbit"
-    href: "hobbit.html"
+    # href: "thehobbit.html"
 
-  - id: d          # Dune
-    label: "Dune"
-    href: "dune.html"
+  - id: 1
+    label: "Wizard of Earthsea"
+    # href: "wizardofearthsea.html"
 
-  - id: e
-    label: "Earthsea"
-    href: "earthsea.html"
+  - id: 2
+    label: "Small Gods"
+    # href: "smallgods.html"
 
-  - id: ds
-    label: "Discworld"
-    href: "discworld.html"
+  - id: 3
+    label: "The Lion, the Witch and the Wardrobe"
+    # href: "discworld.html"
+
+  - id: 4
+    label: "The Golden Compass"
+    # href: "discworld.html"
 
 edges:
-  - from: h
-    to: d
-    trait: World-building
+  
+  - from: 0
+    to: 1
+    label: "world building"
+  
+  - from: 1
+    to: 2
+    label: "escapism"
+  
+  - from: 2
+    to: 3
+    label: "light-hearted comedy"
 
-  - from: h
-    to: e
-    trait: Whimsy
-    level: 1
-
-  - from: e
-    to: ds
-    trait: Whimsy
-    level: 2        # shows as “Whimsy×2”
+  - from: 0
+    to: 4
+    label: "less sword and sorcery"
