@@ -1,6 +1,5 @@
 name: Build diagram
 
-# 👇 add this block
 permissions:
   contents: write
 
