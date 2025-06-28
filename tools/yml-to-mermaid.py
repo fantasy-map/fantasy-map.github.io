@@ -7,7 +7,7 @@ from pathlib import Path
 # Use Path objects for robust file handling.
 # This assumes the script is run from the repository's root directory.
 REPO_ROOT = Path(__file__).parent.parent
-YAML_FILE = REPO_ROOT / "data" / "graph.yml"
+YAML_FILE = REPO_ROOT / "data" / "books.yml"
 OUTPUT_FILE = REPO_ROOT / "map.mmd"
 
 def generate_mermaid_from_yaml():
