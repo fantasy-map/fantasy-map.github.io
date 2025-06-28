@@ -2,16 +2,10 @@
 layout: default
 title: Fantasy Map
 ---
+Welcome to **Fantasy Map** – An Evolving Map of Fantasy Reads
 
-<link rel="stylesheet" href="assets/theme.css">
-
-<!-- Load Mermaid and start it -->
-<script type="module">
-  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad: true, htmlLabels: true });
-</script>
-
-Welcome to **Fantasy Map** – an evolving guide to whimsical & world-building reads.
-
-```mermaid
+<div class="mermaid">
 {% include_relative map.mmd %}
+</div>
+
+This site is open source. [Improve this page](https://github.com/fantasy-map/fantasy-map.github.io/).
