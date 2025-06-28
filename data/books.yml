@@ -1,39 +1,19 @@
+# This file defines the nodes (books) and edges (connections) for the fantasy map.
+# The Python script reads this file to generate the Mermaid diagram.
+
 nodes:
-  
-  - id: 0
-    label: "The Hobbit"
-    # href: "thehobbit.html"
-
-  - id: 1
-    label: "Wizard of Earthsea"
-    # href: "wizardofearthsea.html"
-
-  - id: 2
-    label: "Small Gods"
-    # href: "smallgods.html"
-
-  - id: 3
-    label: "The Lion, the Witch and the Wardrobe"
-    # href: "discworld.html"
-
-  - id: 4
-    label: "The Golden Compass"
-    # href: "discworld.html"
+  h: "The Hobbit"
+  d: "Dune"
+  e: "Earthsea"
+  ds: "Discworld"
 
 edges:
-  
-  - from: 0
-    to: 1
-    label: "world building"
-  
-  - from: 1
-    to: 2
-    label: "escapism"
-  
-  - from: 2
-    to: 3
-    label: "light-hearted comedy"
-
-  - from: 0
-    to: 4
-    label: "less sword and sorcery"
+  - from: h
+    to: d
+    label: "World-building"
+  - from: h
+    to: e
+    label: "Whimsy"
+  - from: e
+    to: ds
+    label: "Whimsy×2"
