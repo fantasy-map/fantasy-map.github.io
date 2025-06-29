@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,9 +23,86 @@
         {{ content }}
     </main>
 
-    <!-- Simple script to load and render the Mermaid diagram -->
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        await mermaid.run();
+    </script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: "Fantasy Map" }}</title>
+    <link rel="stylesheet" href="{{ '/assets/theme.css' | relative_url }}">
+    <script>
+        // This script runs first to prevent a "flash" of the wrong theme.
+        // It checks localStorage and applies the dark mode class before the page is rendered.
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>
+
+    <header>
+        <h1>fantasy-map</h1>
+    </header>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+        // --- Dark Mode Logic ---
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.documentElement.classList.add(currentTheme + '-mode');
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.classList.replace('light-mode', 'dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.replace('dark-mode', 'light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+
+        // --- Mermaid Rendering ---
+        mermaid.initialize({
+            startOnLoad: false, // We will render it manually
+            theme: 'base', // Use a neutral base theme so our CSS can override it
+            themeVariables: {
+                'primaryColor': 'var(--node-bg)',
+                'primaryTextColor': 'var(--text-color)',
+                'lineColor': 'var(--edge-color)',
+            }
+        });
         await mermaid.run();
     </script>
 
