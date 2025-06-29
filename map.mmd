@@ -1,23 +1,23 @@
 flowchart TD
 
-    0["The Hobbit"]
-    click 0 "/books/thehobbit.html"
-    1["A Wizard of Earthsea"]
-    click 1 "/books/awizardofearthsea.html"
-    2["Small Gods"]
-    click 2 "/books/smallgods.html"
-    3["The Lion, the Witch and the Wardrobe"]
-    click 3 "/books/thelionthewitchandthewardrobe.html"
-    4["The Golden Compass/Northern Lights"]
-    click 4 "/books/thegoldencompass.html"
+    hbbt["The Hobbit"]
+    click hbbt "/books/thehobbit.html"
+    awoe["A Wizard of Earthsea"]
+    click awoe "/books/awizardofearthsea.html"
+    smgd["Small Gods"]
+    click smgd "/books/smallgods.html"
+    tlww["The Lion, the Witch and the Wardrobe"]
+    click tlww "/books/thelionthewitchandthewardrobe.html"
+    tgcm["The Golden Compass/Northern Lights"]
+    click tgcm "/books/thegoldencompass.html"
 
 
 
-    0 -- "world building" --> 1
-    1 -- "escapism" --> 2
-    2 -- "light-hearted comedy" --> 3
-    0 -- "less sword and sorcery" --> 4
+    hbbt -- "world building" --> awoe
+    awoe -- "escapism" --> smgd
+    smgd -- "light-hearted comedy" --> tlww
+    hbbt -- "less sword and sorcery" --> tgcm
 
 
     classDef bookNode text-align:center
-    class ,0,1,2,3,4 bookNode
+    class ,hbbt,awoe,smgd,tlww,tgcm bookNode
