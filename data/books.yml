@@ -1,11 +1,30 @@
-# This file defines the nodes (books) and edges (connections) for the fantasy map.
-# The Python script reads this file to generate the Mermaid diagram.
+# This file defines the nodes (books) and the content for their dialog boxes.
 
 nodes:
-  h: "The Hobbit"
-  d: "Dune"
-  e: "Earthsea"
-  ds: "Discworld"
+  h:
+    label: "The Hobbit"
+    details: |
+      Author: J.R.R. Tolkien
+      Series: The Lord of the Rings
+      First Published: 1937
+  d:
+    label: "Dune"
+    details: |
+      Author: Frank Herbert
+      Series: Dune
+      First Published: 1965
+  e:
+    label: "Earthsea"
+    details: |
+      Author: Ursula K. Le Guin
+      Series: Earthsea Cycle
+      First Published: 1968
+  ds:
+    label: "Discworld"
+    details: |
+      Author: Terry Pratchett
+      Series: Discworld
+      First Published: 1983
 
 edges:
   - from: h
