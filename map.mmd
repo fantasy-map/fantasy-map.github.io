@@ -1,8 +1,9 @@
 flowchart TD
-    h["<a href='hobbit.html' class='book-node'>The Hobbit</a>"]
-    d["<a href='dune.html' class='book-node'>Dune</a>"]
-    e["<a href='earthsea.html' class='book-node'>Earthsea</a>"]
-    ds["<a href='discworld.html' class='book-node'>Discworld</a>"]
-    h --|World-building| d
-    h --|Whimsy| e
-    e --|Whimsy×2| ds
+    h["{'label': 'The Hobbit', 'details': 'Author: J.R.R. Tolkien\nSeries: The Lord of the Rings\nFirst Published: 1937\n'}"]
+    d["{'label': 'Dune', 'details': 'Author: Frank Herbert\nSeries: Dune\nFirst Published: 1965\n'}"]
+    e["{'label': 'Earthsea', 'details': 'Author: Ursula K. Le Guin\nSeries: Earthsea Cycle\nFirst Published: 1968\n'}"]
+    ds["{'label': 'Discworld', 'details': 'Author: Terry Pratchett\nSeries: Discworld\nFirst Published: 1983\n'}"]
+
+    h -- "World-building" --> d
+    h -- "Whimsy" --> e
+    e -- "Whimsy×2" --> ds
