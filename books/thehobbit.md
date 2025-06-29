@@ -5,4 +5,3 @@ title: The Hobbit
 #### The Hobbit
 ##### Author: J.R.R. Tolkien
 ##### Series: The Lord of the Rings
-##### First Published: 1937
