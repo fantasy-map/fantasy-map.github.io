@@ -1,5 +1,4 @@
 import yaml
-import json
 from pathlib import Path
 
 # --- Configuration ---
@@ -8,7 +7,7 @@ YAML_FILE = REPO_ROOT / "data" / "books.yml"
 OUTPUT_FILE = REPO_ROOT / "map.mmd"
 
 def generate_mermaid_from_yaml():
-    """Reads data from a YAML file and generates a Mermaid diagram string."""
+    """Reads data from a YAML file and generates a Mermaid diagram string for navigation."""
     
     print(f"Reading data from: {YAML_FILE}")
     with open(YAML_FILE, 'r') as f:
@@ -18,16 +17,13 @@ def generate_mermaid_from_yaml():
     mermaid_lines.append("")
 
     # --- Add Node Definitions ---
-    # This section now contains the corrected logic.
     for node_id, node_data in data.get('nodes', {}).items():
-        # THE FIX: We explicitly pull out the 'label' from the node_data dictionary.
         label = node_data['label']
-        # Now we use *only* the label variable to create the node text.
         mermaid_lines.append(f'    {node_id}["{label}"]')
 
     mermaid_lines.append("")
 
-    # --- Add Edge Definitions (This part was already correct) ---
+    # --- Add Edge Definitions ---
     for edge in data.get('edges', []):
         from_node = edge['from']
         to_node = edge['to']
@@ -36,11 +32,13 @@ def generate_mermaid_from_yaml():
         
     mermaid_lines.append("")
 
-    # --- Add Click Interactions (This part was also already correct) ---
+    # --- Add Click Interactions for Navigation ---
+    # e.g., click h "/books/the-hobbit.html"
     for node_id, node_data in data.get('nodes', {}).items():
-        if 'details' in node_data and node_data['details']:
-            details_text = json.dumps(node_data['details'])
-            mermaid_lines.append(f'    click {node_id} call showDialog({details_text})')
+        if 'href' in node_data and node_data['href']:
+            href = node_data['href']
+            # This syntax tells mermaid to treat the click as a standard link
+            mermaid_lines.append(f'    click {node_id} "{href}"')
             
     mermaid_lines.append("")
     mermaid_lines.append('    classDef bookNode text-align:center')
@@ -52,11 +50,9 @@ def generate_mermaid_from_yaml():
 def main():
     """Main function to generate and write the Mermaid file."""
     mermaid_content = generate_mermaid_from_yaml()
-    
     print("--- Generated Mermaid Content ---")
     print(mermaid_content)
     print("---------------------------------")
-
     print(f"Writing Mermaid diagram to: {OUTPUT_FILE}")
     with open(OUTPUT_FILE, 'w') as f:
         f.write(mermaid_content)
