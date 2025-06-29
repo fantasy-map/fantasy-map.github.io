@@ -1,8 +1,7 @@
 ---
 layout: book
-title: Discworld
+title: Small Gods
 ---
-#### Discworld
+#### Small Gods
 ##### Author: Terry Pratchett
 ##### Series: Discworld
-##### First Published: 1983
