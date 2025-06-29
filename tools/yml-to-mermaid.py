@@ -16,12 +16,20 @@ def generate_mermaid_from_yaml():
     mermaid_lines = ["flowchart TD"]
     mermaid_lines.append("")
 
-    # --- Add Node Definitions ---
-    for node_id, node_data in data.get('nodes', {}).items():
-        label = node_data['label']
-        mermaid_lines.append(f'    {node_id}["{label}"]')
+    # # --- Add Node Definitions ---
+    # for node_id, node_data in data.get('nodes', {}).items():
+    #     label = node_data['label']
+    #     mermaid_lines.append(f'    {node_id}["{label}"]')
 
-    mermaid_lines.append("")
+    # --- Add Node Definitions ---
+    for node in data.get('nodes', []):
+        node_id = node['id']
+        label = node['label']
+        href = node['href']
+        mermaid_lines.append(f'    {node_id}["{label}"]')
+        mermaid_lines.append(f'    click {node_id} "{href}"')
+    
+    mermaid_lines.append("\n\n")
 
     # --- Add Edge Definitions ---
     for edge in data.get('edges', []):
@@ -34,15 +42,16 @@ def generate_mermaid_from_yaml():
 
     # --- Add Click Interactions for Navigation ---
     # e.g., click h "/books/the-hobbit.html"
-    for node_id, node_data in data.get('nodes', {}).items():
-        if 'href' in node_data and node_data['href']:
-            href = node_data['href']
-            # This syntax tells mermaid to treat the click as a standard link
-            mermaid_lines.append(f'    click {node_id} "{href}"')
+    # for node_id, node_data in data.get('nodes', {}).items():
+    #     if 'href' in node_data and node_data['href']:
+    #         href = node_data['href']
+    #         # This syntax tells mermaid to treat the click as a standard link
+    #         mermaid_lines.append(f'    click {node_id} "{href}"')
             
     mermaid_lines.append("")
     mermaid_lines.append('    classDef bookNode text-align:center')
-    all_node_ids = ",".join(data.get('nodes', {}).keys())
+    # all_node_ids = ",".join(data.get('nodes', {}).keys())
+    all_node_ids = ",".join([node['id'] for node in data.get('nodes', [])])
     mermaid_lines.append(f'    class {all_node_ids} bookNode')
 
     return "\n".join(mermaid_lines)
