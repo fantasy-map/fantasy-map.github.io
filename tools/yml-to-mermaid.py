@@ -29,7 +29,7 @@ def generate_mermaid_from_yaml():
         href = node['href']
         mermaid_lines.append(f'    {node_id}["{label}"]')
         mermaid_lines.append(f'    click {node_id} "{href}"')
-        all_node_ids = all_node_ids + "," + node_id
+        all_node_ids = all_node_ids + "," + str(node_id)
     
     mermaid_lines.append("\n\n")
 
