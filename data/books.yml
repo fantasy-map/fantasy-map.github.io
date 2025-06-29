@@ -1,41 +1,39 @@
-# This file defines the nodes (books) and the links to their detail pages.
-
 nodes:
   
-  - id: 0
+  - id: hbbt
     label: "The Hobbit"
     href: "/books/thehobbit.html"
 
-  - id: 1
+  - id: awoe
     label: "A Wizard of Earthsea"
     href: "/books/awizardofearthsea.html"
 
-  - id: 2
+  - id: smgd
     label: "Small Gods"
     href: "/books/smallgods.html"
 
-  - id: 3
+  - id: tlww
     label: "The Lion, the Witch and the Wardrobe"
     href: "/books/thelionthewitchandthewardrobe.html"
 
-  - id: 4
+  - id: tgcm
     label: "The Golden Compass/Northern Lights"
     href: "/books/thegoldencompass.html"
 
 edges:
   
-  - from: 0
-    to: 1
+  - from: hbbt
+    to: awoe
     label: "world building"
   
-  - from: 1
-    to: 2
+  - from: awoe
+    to: smgd
     label: "escapism"
   
-  - from: 2
-    to: 3
+  - from: smgd
+    to: tlww
     label: "light-hearted comedy"
 
-  - from: 0
-    to: 4
+  - from: hbbt
+    to: tgcm
     label: "less sword and sorcery"
