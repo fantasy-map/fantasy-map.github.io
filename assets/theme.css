@@ -1,28 +1,28 @@
-/* --- 1. Color and Font Definitions using CSS Variables --- */
-:root {
-  /* Light Mode Palette */
-  --bg-color: #f8f9fa;
-  --text-color: #212529;
-  --header-color: #343a40;
-  --link-color: #007bff;
-  --border-color: #dee2e6;
-  --node-bg: #e9ecef;
-  --node-border: #adb5bd;
-  --edge-text-bg: #f8f9fa; /* Match the main background */
-  --edge-color: #6c757d;
+/* --- 1. Modern Color Palette --- */
+/* We define all colors here. The 'html' block is for light mode by default. */
+html {
+  --bg-color: #f4f4f5;         /* A very light, soft gray */
+  --text-color: #18181b;       /* A dark charcoal, not pure black */
+  --header-color: #18181b;
+  --accent-color: #4f46e5;     /* A vibrant indigo for links and highlights */
+  --border-color: #d4d4d8;
+  --node-bg: #ffffff;          /* White nodes to stand out on the gray bg */
+  --node-border: #a1a1aa;
+  --edge-color: #71717a;        /* A muted gray for arrows */
+  --edge-text-bg: #f4f4f5;      /* Match the main background */
 }
 
-body.dark-mode {
-  /* Dark Mode Palette */
-  --bg-color: #1a1a1a;
-  --text-color: #e9ecef;
-  --header-color: #f8f9fa;
-  --link-color: #80bfff;
-  --border-color: #495057;
-  --node-bg: #343a40;
-  --node-border: #adb5bd;
-  --edge-text-bg: #1a1a1a; /* Match the main background */
-  --edge-color: #adb5bd;
+/* This is the corrected selector! It now looks for the class on the HTML tag. */
+html.dark-mode {
+  --bg-color: #18181b;         /* Dark charcoal background */
+  --text-color: #e4e4e7;       /* A light, soft gray for text */
+  --header-color: #ffffff;
+  --accent-color: #818cf8;     /* A lighter indigo for dark backgrounds */
+  --border-color: #3f3f46;
+  --node-bg: #27272a;          /* A slightly lighter charcoal for nodes */
+  --node-border: #71717a;
+  --edge-color: #a1a1aa;        /* A lighter gray for arrows */
+  --edge-text-bg: #18181b;      /* Match the main background */
 }
 
 /* --- 2. General Page Styles --- */
@@ -39,10 +39,12 @@ body {
 
 h1 {
   color: var(--header-color);
+  transition: color 0.3s;
 }
 
 a {
-  color: var(--link-color);
+  color: var(--accent-color);
+  transition: color 0.3s;
 }
 
 .back-link {
@@ -56,7 +58,7 @@ a {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 1em;
+  top: 1.5em;
   right: 2em;
 }
 .theme-switch {
@@ -91,41 +93,34 @@ a {
   border-radius: 50%;
 }
 input:checked + .slider {
-  background-color: var(--link-color);
+  background-color: var(--accent-color);
 }
 input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* --- 4. Mermaid Diagram Styles --- */
+/* --- 4. Mermaid Diagram Styles (Using our variables) --- */
 .mermaid svg {
   cursor: pointer;
 }
 
-/* Style for the nodes */
 .bookNode {
   fill: var(--node-bg) !important;
   stroke: var(--node-border) !important;
   stroke-width: 2px !important;
-}
-.bookNode .nodeLabel {
   color: var(--text-color) !important;
-  font-weight: bold !important;
 }
 
-/* Style for the edges (arrows) */
 .edgePath {
   stroke: var(--edge-color) !important;
-  stroke-width: 2px !important;
+  stroke-width: 1.5px !important;
 }
 .arrowheadPath {
   fill: var(--edge-color) !important;
 }
 
-/* Style for the text on the edges */
 .edgeLabel {
   background-color: var(--edge-text-bg) !important;
   color: var(--text-color) !important;
-  padding: 2px 4px !important;
-  border-radius: 4px;
+  padding: 0px !important; /* Let Mermaid handle padding */
 }
