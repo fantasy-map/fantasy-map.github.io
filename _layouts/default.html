@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ '/assets/theme.css' | relative_url }}">
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 2em; }
-        .mermaid { text-align: center; }
+        .mermaid { text-align: center; cursor: pointer; }
         .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
         .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 400px; border-radius: 8px; font-family: monospace; white-space: pre-wrap; }
         .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
@@ -34,38 +34,38 @@
 
     <!-- Load Mermaid.js and our custom JavaScript -->
     <script type="module">
-        // Import the Mermaid library
+        // Import the Mermaid library at the top level
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
 
-        // --- STEP 1: Define all our custom functions and variables first ---
-        const modal = document.getElementById("myModal");
-        const modalText = document.getElementById("modalText");
-        const closeBtn = document.getElementsByClassName("close")[0];
+        // THE FIX: Wait until the entire HTML document is loaded and ready.
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Now that the page is ready, we can safely find our elements.
+            const modal = document.getElementById("myModal");
+            const modalText = document.getElementById("modalText");
+            const closeBtn = document.getElementsByClassName("close")[0];
 
-        window.showDialog = function(details) {
-            modalText.innerText = details;
-            modal.style.display = "block";
-        }
+            // Define the function that Mermaid will call.
+            window.showDialog = function(details) {
+                modalText.innerText = details;
+                modal.style.display = "block";
+            }
 
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
+            // Set up the close button's click event.
+            closeBtn.onclick = function() {
                 modal.style.display = "none";
             }
-        }
-        
-        // --- STEP 2: Now that everything is ready, tell Mermaid to render. ---
-        // THE FIX IS HERE: We wrap the call in an async function.
-        const renderDiagram = async () => {
-          await mermaid.run();
-        };
-        
-        // Now we call our new function.
-        renderDiagram();
 
+            // Set up the click event to close the modal by clicking outside of it.
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            
+            // Finally, now that everything is set up, tell Mermaid to render the diagram.
+            mermaid.run();
+        });
     </script>
 
 </body>
