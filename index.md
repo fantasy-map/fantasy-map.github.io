@@ -1,5 +1,3 @@
-#### Welcome to **Fantasy Map** – An Evolving Map of Fantasy Reads
-
 <div class="mermaid">
 {% include_relative map.mmd %}
 </div>
