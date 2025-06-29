@@ -1,28 +1,26 @@
 /* --- 1. Modern Color Palette --- */
-/* We define all colors here. The 'html' block is for light mode by default. */
 html {
-  --bg-color: #f4f4f5;         /* A very light, soft gray */
-  --text-color: #18181b;       /* A dark charcoal, not pure black */
+  --bg-color: #f4f4f5;
+  --text-color: #18181b;
   --header-color: #18181b;
-  --accent-color: #4f46e5;     /* A vibrant indigo for links and highlights */
+  --accent-color: #4f46e5;
   --border-color: #d4d4d8;
-  --node-bg: #ffffff;          /* White nodes to stand out on the gray bg */
+  --node-bg: #ffffff;
   --node-border: #a1a1aa;
-  --edge-color: #71717a;        /* A muted gray for arrows */
-  --edge-text-bg: #f4f4f5;      /* Match the main background */
+  --edge-color: #71717a;
+  --edge-text-bg: #f4f4f5;
 }
 
-/* This is the corrected selector! It now looks for the class on the HTML tag. */
 html.dark-mode {
-  --bg-color: #18181b;         /* Dark charcoal background */
-  --text-color: #e4e4e7;       /* A light, soft gray for text */
+  --bg-color: #18181b;
+  --text-color: #e4e4e7;
   --header-color: #ffffff;
-  --accent-color: #818cf8;     /* A lighter indigo for dark backgrounds */
+  --accent-color: #818cf8;
   --border-color: #3f3f46;
-  --node-bg: #27272a;          /* A slightly lighter charcoal for nodes */
+  --node-bg: #27272a;
   --node-border: #71717a;
-  --edge-color: #a1a1aa;        /* A lighter gray for arrows */
-  --edge-text-bg: #18181b;      /* Match the main background */
+  --edge-color: #a1a1aa;
+  --edge-text-bg: #18181b;
 }
 
 /* --- 2. General Page Styles --- */
@@ -61,6 +59,15 @@ a {
   top: 1.5em;
   right: 2em;
 }
+
+/* THIS IS THE NEW CSS RULE FOR THE TEXT */
+.theme-switch-label {
+  margin-right: 10px;
+  font-size: 0.9em;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
 .theme-switch {
   display: inline-block;
   height: 24px;
@@ -122,5 +129,5 @@ input:checked + .slider:before {
 .edgeLabel {
   background-color: var(--edge-text-bg) !important;
   color: var(--text-color) !important;
-  padding: 0px !important; /* Let Mermaid handle padding */
+  padding: 0px !important;
 }
