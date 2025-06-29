@@ -15,6 +15,7 @@ def generate_mermaid_from_yaml():
 
     mermaid_lines = ["flowchart TD"]
     mermaid_lines.append("")
+    all_node_ids = ""
 
     # # --- Add Node Definitions ---
     # for node_id, node_data in data.get('nodes', {}).items():
@@ -28,6 +29,7 @@ def generate_mermaid_from_yaml():
         href = node['href']
         mermaid_lines.append(f'    {node_id}["{label}"]')
         mermaid_lines.append(f'    click {node_id} "{href}"')
+        all_node_ids = all_node_ids + "," + node_id
     
     mermaid_lines.append("\n\n")
 
@@ -51,7 +53,7 @@ def generate_mermaid_from_yaml():
     mermaid_lines.append("")
     mermaid_lines.append('    classDef bookNode text-align:center')
     # all_node_ids = ",".join(data.get('nodes', {}).keys())
-    all_node_ids = ",".join([node['id'] for node in data.get('nodes', [])])
+    # all_node_ids = ",".join([node['id'] for node in data.get('nodes', [])])
     mermaid_lines.append(f'    class {all_node_ids} bookNode')
 
     return "\n".join(mermaid_lines)
