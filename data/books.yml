@@ -7,8 +7,8 @@ nodes:
     href: "/books/thehobbit.html"
 
   - id: 1
-    label: "Wizard of Earthsea"
-    href: "/books/wizardofearthsea.html"
+    label: "A Wizard of Earthsea"
+    href: "/books/awizardofearthsea.html"
 
   - id: 2
     label: "Small Gods"
@@ -19,7 +19,7 @@ nodes:
     href: "/books/thelionthewitchandthewardrobe.html"
 
   - id: 4
-    label: "The Golden Compass"
+    label: "The Golden Compass/Northern Lights"
     href: "/books/thegoldencompass.html"
 
 edges:
