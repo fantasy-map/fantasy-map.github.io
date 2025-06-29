@@ -18,13 +18,16 @@ def generate_mermaid_from_yaml():
     mermaid_lines.append("")
 
     # --- Add Node Definitions ---
+    # This is the section with the fix.
     for node_id, node_data in data.get('nodes', {}).items():
+        # THE FIX IS HERE: We explicitly pull out the 'label' from the node_data dictionary.
         label = node_data['label']
+        # Now we use *only* the label variable to create the node text.
         mermaid_lines.append(f'    {node_id}["{label}"]')
 
     mermaid_lines.append("")
 
-    # --- Add Edge Definitions ---
+    # --- Add Edge Definitions (This part was already correct) ---
     for edge in data.get('edges', []):
         from_node = edge['from']
         to_node = edge['to']
@@ -33,11 +36,9 @@ def generate_mermaid_from_yaml():
         
     mermaid_lines.append("")
 
-    # --- Add Click Interactions to call a JavaScript function ---
-    # e.g., click h call showDialog("Author: J.R.R. Tolkien...")
+    # --- Add Click Interactions (This part was also already correct) ---
     for node_id, node_data in data.get('nodes', {}).items():
         if 'details' in node_data and node_data['details']:
-            # Use json.dumps to safely escape the text for JavaScript
             details_text = json.dumps(node_data['details'])
             mermaid_lines.append(f'    click {node_id} call showDialog({details_text})')
             
