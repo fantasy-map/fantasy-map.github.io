@@ -1,8 +1,4 @@
----
-layout: default
-title: Fantasy Map
----
-Welcome to **Fantasy Map** – An Evolving Map of Fantasy Reads
+#### Welcome to **Fantasy Map** – An Evolving Map of Fantasy Reads
 
 <div class="mermaid">
 {% include_relative map.mmd %}
