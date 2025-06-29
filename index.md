@@ -8,4 +8,4 @@ Welcome to **Fantasy Map** – An Evolving Map of Fantasy Reads
 {% include_relative map.mmd %}
 </div>
 
-This site is open source. [Improve this page](https://github.com/fantasy-map/fantasy-map.github.io/).
+This site is open source. [Help improve this page](https://github.com/fantasy-map/fantasy-map.github.io/).
