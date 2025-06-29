@@ -1,8 +1,7 @@
 ---
 layout: book
-title: Earthsea
+title: A Wizard of Earthsea
 ---
-#### Earthsea
+#### A Wizard of Earthsea
 ##### Author: Ursula K. Le Guin
 ##### Series: Earthsea Cycle
-##### First Published: 1968
