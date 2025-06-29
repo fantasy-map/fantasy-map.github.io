@@ -18,9 +18,9 @@ def generate_mermaid_from_yaml():
     mermaid_lines.append("")
 
     # --- Add Node Definitions ---
-    # This is the section with the fix.
+    # This section now contains the corrected logic.
     for node_id, node_data in data.get('nodes', {}).items():
-        # THE FIX IS HERE: We explicitly pull out the 'label' from the node_data dictionary.
+        # THE FIX: We explicitly pull out the 'label' from the node_data dictionary.
         label = node_data['label']
         # Now we use *only* the label variable to create the node text.
         mermaid_lines.append(f'    {node_id}["{label}"]')
