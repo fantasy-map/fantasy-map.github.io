@@ -1,25 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | Fantasy Map</title>
-    <link rel="stylesheet" href="{{ '/assets/theme.css' | relative_url }}">
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 2em; }
-        .back-link { margin-top: 2em; display: inline-block; }
-    </style>
-</head>
-<body>
-    <main>
-        
-        {{ content }}
-
-        <a href="/" class="back-link">&larr; Back to Map</a>
-    </main>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +11,6 @@
             const theme = localStorage.getItem('theme');
             if (theme === 'dark') {
                 document.documentElement.classList.add('dark-mode');
-            } else {
-                // Default to light mode if nothing is set
-                document.documentElement.classList.add('light-mode');
             }
         })();
     </script>
@@ -43,6 +18,8 @@
 <body>
 
     <div class="theme-switch-wrapper">
+        <!-- THIS IS THE NEW LINE OF TEXT -->
+        <span class="theme-switch-label">Toggle Dark Mode</span>
         <label class="theme-switch" for="checkbox">
             <input type="checkbox" id="checkbox" />
             <div class="slider round"></div>
@@ -57,23 +34,22 @@
     <script>
         // --- Dark Mode Logic ---
         const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-        const currentTheme = localStorage.getItem('theme');
+        const docElement = document.documentElement;
 
-        if (currentTheme === 'dark') {
+        // Set the initial state of the toggle based on the theme
+        if (localStorage.getItem('theme') === 'dark') {
             toggleSwitch.checked = true;
         }
 
-        function switchTheme(e) {
+        toggleSwitch.addEventListener('change', function(e) {
             if (e.target.checked) {
-                document.documentElement.classList.replace('light-mode', 'dark-mode');
+                docElement.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark');
             } else {
-                document.documentElement.classList.replace('dark-mode', 'light-mode');
+                docElement.classList.remove('dark-mode');
                 localStorage.setItem('theme', 'light');
             }
-        }
-
-        toggleSwitch.addEventListener('change', switchTheme, false);
+        }, false);
     </script>
 
 </body>
